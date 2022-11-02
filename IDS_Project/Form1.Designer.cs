@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.StartSnifferBtn = new System.Windows.Forms.Button();
-            this.TbDevices = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TbVersion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,83 +39,71 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnRemoveFilters = new System.Windows.Forms.Button();
             this.btnUDP = new System.Windows.Forms.Button();
+            this.btnArp = new System.Windows.Forms.Button();
+            this.listDevices = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // StartSnifferBtn
             // 
-            this.StartSnifferBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.StartSnifferBtn.Location = new System.Drawing.Point(15, 9);
-            this.StartSnifferBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StartSnifferBtn.BackColor = System.Drawing.Color.Green;
+            this.StartSnifferBtn.Enabled = false;
+            this.StartSnifferBtn.Location = new System.Drawing.Point(11, 7);
             this.StartSnifferBtn.Name = "StartSnifferBtn";
-            this.StartSnifferBtn.Size = new System.Drawing.Size(156, 53);
+            this.StartSnifferBtn.Size = new System.Drawing.Size(117, 43);
             this.StartSnifferBtn.TabIndex = 0;
             this.StartSnifferBtn.Text = "Start Sniffing";
             this.StartSnifferBtn.UseVisualStyleBackColor = false;
             this.StartSnifferBtn.Click += new System.EventHandler(this.StartSnifferBtn_Click);
             // 
-            // TbDevices
-            // 
-            this.TbDevices.Location = new System.Drawing.Point(16, 160);
-            this.TbDevices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.TbDevices.Name = "TbDevices";
-            this.TbDevices.Size = new System.Drawing.Size(1033, 134);
-            this.TbDevices.TabIndex = 1;
-            this.TbDevices.Text = "";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 140);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 98);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
+            this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Devices";
+            this.label1.Text = "Devices to Listen";
             // 
             // TbVersion
             // 
-            this.TbVersion.Location = new System.Drawing.Point(147, 109);
-            this.TbVersion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbVersion.Location = new System.Drawing.Point(119, 70);
             this.TbVersion.Name = "TbVersion";
-            this.TbVersion.Size = new System.Drawing.Size(132, 22);
+            this.TbVersion.Size = new System.Drawing.Size(100, 20);
             this.TbVersion.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 112);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 16);
+            this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "SharpPcap Version:";
+            this.label2.Text = "NPcap Version:";
             // 
             // tbPackets
             // 
-            this.tbPackets.Location = new System.Drawing.Point(13, 332);
-            this.tbPackets.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPackets.Location = new System.Drawing.Point(15, 252);
             this.tbPackets.Name = "tbPackets";
-            this.tbPackets.Size = new System.Drawing.Size(1033, 209);
+            this.tbPackets.Size = new System.Drawing.Size(776, 186);
             this.tbPackets.TabIndex = 5;
             this.tbPackets.Text = "";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 312);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(12, 236);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 16);
+            this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Packets";
             // 
             // btnStopSniffing
             // 
-            this.btnStopSniffing.BackColor = System.Drawing.Color.LightCoral;
-            this.btnStopSniffing.Location = new System.Drawing.Point(179, 9);
-            this.btnStopSniffing.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStopSniffing.BackColor = System.Drawing.Color.Brown;
+            this.btnStopSniffing.Enabled = false;
+            this.btnStopSniffing.Location = new System.Drawing.Point(134, 7);
             this.btnStopSniffing.Name = "btnStopSniffing";
-            this.btnStopSniffing.Size = new System.Drawing.Size(169, 53);
+            this.btnStopSniffing.Size = new System.Drawing.Size(127, 43);
             this.btnStopSniffing.TabIndex = 7;
             this.btnStopSniffing.Text = "Stop Sniffing";
             this.btnStopSniffing.UseVisualStyleBackColor = false;
@@ -124,49 +111,83 @@
             // 
             // btnTcp
             // 
-            this.btnTcp.Location = new System.Drawing.Point(743, 12);
+            this.btnTcp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTcp.Enabled = false;
+            this.btnTcp.Location = new System.Drawing.Point(557, 10);
+            this.btnTcp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTcp.Name = "btnTcp";
-            this.btnTcp.Size = new System.Drawing.Size(95, 39);
+            this.btnTcp.Size = new System.Drawing.Size(71, 32);
             this.btnTcp.TabIndex = 8;
             this.btnTcp.Text = "TCP";
-            this.btnTcp.UseVisualStyleBackColor = true;
+            this.btnTcp.UseVisualStyleBackColor = false;
             this.btnTcp.Click += new System.EventHandler(this.btnTcp_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(562, 23);
+            this.label5.Location = new System.Drawing.Point(422, 19);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 16);
+            this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Filtros";
             // 
             // btnRemoveFilters
             // 
-            this.btnRemoveFilters.Location = new System.Drawing.Point(611, 12);
+            this.btnRemoveFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRemoveFilters.Enabled = false;
+            this.btnRemoveFilters.Location = new System.Drawing.Point(458, 10);
+            this.btnRemoveFilters.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRemoveFilters.Name = "btnRemoveFilters";
-            this.btnRemoveFilters.Size = new System.Drawing.Size(126, 39);
+            this.btnRemoveFilters.Size = new System.Drawing.Size(94, 32);
             this.btnRemoveFilters.TabIndex = 11;
             this.btnRemoveFilters.Text = "Remove Filters";
-            this.btnRemoveFilters.UseVisualStyleBackColor = true;
+            this.btnRemoveFilters.UseVisualStyleBackColor = false;
             this.btnRemoveFilters.Click += new System.EventHandler(this.btnRemoveFilters_Click);
             // 
             // btnUDP
             // 
-            this.btnUDP.Location = new System.Drawing.Point(844, 12);
+            this.btnUDP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnUDP.Enabled = false;
+            this.btnUDP.Location = new System.Drawing.Point(633, 10);
+            this.btnUDP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUDP.Name = "btnUDP";
-            this.btnUDP.Size = new System.Drawing.Size(95, 39);
+            this.btnUDP.Size = new System.Drawing.Size(71, 32);
             this.btnUDP.TabIndex = 12;
             this.btnUDP.Text = "UDP";
-            this.btnUDP.UseVisualStyleBackColor = true;
+            this.btnUDP.UseVisualStyleBackColor = false;
             this.btnUDP.Click += new System.EventHandler(this.btnUDP_Click);
+            // 
+            // btnArp
+            // 
+            this.btnArp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnArp.Enabled = false;
+            this.btnArp.Location = new System.Drawing.Point(708, 9);
+            this.btnArp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArp.Name = "btnArp";
+            this.btnArp.Size = new System.Drawing.Size(71, 32);
+            this.btnArp.TabIndex = 13;
+            this.btnArp.Text = "ARP";
+            this.btnArp.UseVisualStyleBackColor = false;
+            this.btnArp.Click += new System.EventHandler(this.btnArp_Click);
+            // 
+            // listDevices
+            // 
+            this.listDevices.FormattingEnabled = true;
+            this.listDevices.Location = new System.Drawing.Point(15, 114);
+            this.listDevices.Name = "listDevices";
+            this.listDevices.Size = new System.Drawing.Size(776, 95);
+            this.listDevices.TabIndex = 15;
+            this.listDevices.SelectedIndexChanged += new System.EventHandler(this.listDevices_SelectedIndexChanged);
             // 
             // IDS
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MediumPurple;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listDevices);
+            this.Controls.Add(this.btnArp);
             this.Controls.Add(this.btnUDP);
             this.Controls.Add(this.btnRemoveFilters);
             this.Controls.Add(this.label5);
@@ -177,11 +198,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TbVersion);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TbDevices);
             this.Controls.Add(this.StartSnifferBtn);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "IDS";
             this.Text = "IDS";
+            this.Load += new System.EventHandler(this.IDS_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,7 +211,6 @@
         #endregion
 
         private System.Windows.Forms.Button StartSnifferBtn;
-        private System.Windows.Forms.RichTextBox TbDevices;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TbVersion;
         private System.Windows.Forms.Label label2;
@@ -201,6 +221,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRemoveFilters;
         private System.Windows.Forms.Button btnUDP;
+        private System.Windows.Forms.Button btnArp;
+        private System.Windows.Forms.ListBox listDevices;
     }
 }
 
