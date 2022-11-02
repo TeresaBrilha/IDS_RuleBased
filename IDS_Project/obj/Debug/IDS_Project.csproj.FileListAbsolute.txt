@@ -22,3 +22,27 @@ C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_Project\IDS_Pr
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_Project\IDS_Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_Project\IDS_Project\bin\Debug\System.Text.Encoding.CodePages.xml
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_Project\IDS_Project\obj\Debug\IDS_Project.csproj.CopyComplete
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\IDS_Project.exe.config
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\IDS_Project.exe
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\IDS_Project.pdb
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\PacketDotNet.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\SharpPcap.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Buffers.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Memory.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Numerics.Vectors.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Text.Encoding.CodePages.dll
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Buffers.xml
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Memory.xml
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Numerics.Vectors.xml
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\bin\Debug\System.Text.Encoding.CodePages.xml
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.AssemblyReference.cache
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.SuggestedBindingRedirects.cache
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.Properties.Resources.resources
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.GenerateResource.cache
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.CoreCompileInputs.cache
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.CopyComplete
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.exe
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.pdb
+D:\pasta_de_pastas\facul\mestrado_1\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.IDS.resources
