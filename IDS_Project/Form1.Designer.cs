@@ -173,6 +173,7 @@
             // 
             // listDevices
             // 
+            this.listDevices.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listDevices.FormattingEnabled = true;
             this.listDevices.Location = new System.Drawing.Point(15, 114);
             this.listDevices.Name = "listDevices";
