@@ -77,8 +77,7 @@ namespace IDS_Project
                 if (device.Description.Equals(selectedDevice))
                 {
                     //Open device for capture
-                    int readTimeoutMilliseconds = 1000;
-                    device.Open(DeviceModes.Promiscuous, readTimeoutMilliseconds);
+                    device.Open();
                     tbPackets.AppendText($"-- Listening on {device.Description}\n");
                     device.OnPacketArrival += Device_OnPacketArrival;
                     device.StartCapture();
@@ -107,6 +106,8 @@ namespace IDS_Project
                     btnTcp.Enabled = true;
                     btnUDP.Enabled = true;
                     btnArp.Enabled = true;
+                    btnICMP.Enabled = true;
+                    btnIGMP.Enabled = true;
                 }
 
                 //Se o filtro TCP/IP foi selecionado
@@ -169,12 +170,80 @@ namespace IDS_Project
                         string senderHdwAdrs = arp.SenderHardwareAddress.ToString();
                         string receiverHdwAdrs = arp.TargetHardwareAddress.ToString();
                         string senderProtAdrs = arp.SenderProtocolAddress.ToString();
-                        string receiverProtAdrs = arp.TargetProtocolAddress.ToString();                      
+                        string receiverProtAdrs = arp.TargetProtocolAddress.ToString();                  
 
                         tbPackets.AppendText($"Time:{time.Hour}:{time.Minute}:{time.Second} | Package Len = {lenPacket}" +
                         $" | Type: ARP" +
                         $" | Sender Hardware Address :{senderHdwAdrs} | Target Hardware Address :{receiverHdwAdrs}" +
                         $" | Sender Protocol Address :{senderProtAdrs} | Target Protocol Address :{receiverProtAdrs} \n");
+                    }
+                }
+                //Se o filtro ICMPV4 foi selecionado
+                if (deviceCaptured.Filter.Equals("icmp") || deviceCaptured.Filter.Equals(string.Empty))
+                {
+                    var icmp4 = (IcmpV4Packet)packetResult.GetPacket().Extract<IcmpV4Packet>();
+                    var icmp6 = (IcmpV6Packet)packetResult.GetPacket().Extract<IcmpV6Packet>();
+                    if (icmp4 != null)
+                    {
+                        //Dados Pacote
+                        DateTime time = packetResult.Timeval.Date;
+                        int lenPacket = packetResult.Data.Length;
+
+                        //ICMPV4
+                        string id = icmp4.Id.ToString();
+                        string checksum = icmp4.Checksum.ToString();
+                        string checksumValid = icmp4.ValidIcmpChecksum.ToString();
+
+                        //Dados Ip
+                        var ipPacket = (IPPacket)icmp4.ParentPacket;
+                        string srcAddress = ipPacket.SourceAddress.ToString();
+                        string dstAddress = ipPacket.DestinationAddress.ToString();
+
+                        tbPackets.AppendText($"Time:{time.Hour}:{time.Minute}:{time.Second} | Package Len = {lenPacket}" +
+                        $" | Type: ICMPV4" +
+                        $" | Source IP: {srcAddress} | Destination IP: {dstAddress}" +
+                        $" | Id :{id} | Checksum :{checksum} | Valid Checksum :{checksumValid} \n");
+                    }
+                    if(icmp6 != null)
+                    {
+                        //Dados Pacote
+                        DateTime time = packetResult.Timeval.Date;
+                        int lenPacket = packetResult.Data.Length;
+
+                        //ICMPV6
+                        string color = icmp6.Color.ToString();
+                        string checksum = icmp6.Checksum.ToString();
+                        string checksumValid = icmp6.ValidIcmpChecksum.ToString();
+
+                        //Dados Ip
+                        var ipPacket = (IPPacket)icmp6.ParentPacket;
+                        string srcAddress = ipPacket.SourceAddress.ToString();
+                        string dstAddress = ipPacket.DestinationAddress.ToString();
+
+                        tbPackets.AppendText($"Time:{time.Hour}:{time.Minute}:{time.Second} | Package Len = {lenPacket}" +
+                        $" | Type: ICMPV6" +
+                        $" | Source IP: {srcAddress} | Destination IP: {dstAddress}" +
+                        $" | Color :{color} | Checksum :{checksum} | Valid Checksum :{checksumValid} \n");
+                    }
+                }
+                //Se o filtro IGMP foi selecionado
+                if (deviceCaptured.Filter.Equals("igmp") || deviceCaptured.Filter.Equals(string.Empty))
+                {
+                    var igmp = (IgmpPacket)packetResult.GetPacket().Extract<IgmpPacket>();
+                    if (igmp != null)
+                    {
+                        //Dados Pacote
+                        DateTime time = packetResult.Timeval.Date;
+                        int lenPacket = packetResult.Data.Length;
+
+                        //Dados Ip
+                        var ipPacket = (IPPacket)igmp.ParentPacket;
+                        string srcAddress = ipPacket.SourceAddress.ToString();
+                        string dstAddress = ipPacket.DestinationAddress.ToString();
+
+                        tbPackets.AppendText($"Time:{time.Hour}:{time.Minute}:{time.Second} | Package Len = {lenPacket}" +
+                        $" | Type: IGMP" +
+                        $" | Source IP: {srcAddress} | Destination IP: {dstAddress}\n");
                     }
                 }
 
@@ -203,6 +272,8 @@ namespace IDS_Project
             btnTcp.Enabled = false;
             btnUDP.Enabled = false;
             btnArp.Enabled = false;
+            btnICMP.Enabled = false;
+            btnIGMP.Enabled = false;    
         }
 
         private void btnRemoveFilters_Click(object sender, EventArgs e)
@@ -238,9 +309,27 @@ namespace IDS_Project
             deviceCaptured.Filter = filters;
         }
 
+        private void btnICMP_Click_1(object sender, EventArgs e)
+        {
+            tbPackets.Clear();
+            tbPackets.AppendText("ICMP Filter Applied:\n");
+            filters = "icmp";
+            deviceCaptured.Filter = filters;
+        }
+
+        private void btnIGMP_Click(object sender, EventArgs e)
+        {
+            tbPackets.Clear();
+            tbPackets.AppendText("IGMP Filter Applied:\n");
+            filters = "igmp";
+            deviceCaptured.Filter = filters;
+        }
+
         private void listDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
             StartSnifferBtn.Enabled = true;
         }
+
+
     }
 }
