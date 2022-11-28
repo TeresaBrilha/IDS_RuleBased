@@ -43,16 +43,17 @@
             this.listDevices = new System.Windows.Forms.ListBox();
             this.btnICMP = new System.Windows.Forms.Button();
             this.btnIGMP = new System.Windows.Forms.Button();
+            this.btnSniffFromFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StartSnifferBtn
             // 
-            this.StartSnifferBtn.BackColor = System.Drawing.Color.Green;
+            this.StartSnifferBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.StartSnifferBtn.Enabled = false;
             this.StartSnifferBtn.Location = new System.Drawing.Point(15, 9);
             this.StartSnifferBtn.Margin = new System.Windows.Forms.Padding(4);
             this.StartSnifferBtn.Name = "StartSnifferBtn";
-            this.StartSnifferBtn.Size = new System.Drawing.Size(156, 53);
+            this.StartSnifferBtn.Size = new System.Drawing.Size(127, 42);
             this.StartSnifferBtn.TabIndex = 0;
             this.StartSnifferBtn.Text = "Start Sniffing";
             this.StartSnifferBtn.UseVisualStyleBackColor = false;
@@ -107,12 +108,12 @@
             // 
             // btnStopSniffing
             // 
-            this.btnStopSniffing.BackColor = System.Drawing.Color.Brown;
+            this.btnStopSniffing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.btnStopSniffing.Enabled = false;
-            this.btnStopSniffing.Location = new System.Drawing.Point(179, 9);
+            this.btnStopSniffing.Location = new System.Drawing.Point(285, 8);
             this.btnStopSniffing.Margin = new System.Windows.Forms.Padding(4);
             this.btnStopSniffing.Name = "btnStopSniffing";
-            this.btnStopSniffing.Size = new System.Drawing.Size(169, 53);
+            this.btnStopSniffing.Size = new System.Drawing.Size(133, 41);
             this.btnStopSniffing.TabIndex = 7;
             this.btnStopSniffing.Text = "Stop Sniffing";
             this.btnStopSniffing.UseVisualStyleBackColor = false;
@@ -120,7 +121,7 @@
             // 
             // btnTcp
             // 
-            this.btnTcp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnTcp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnTcp.Enabled = false;
             this.btnTcp.Location = new System.Drawing.Point(743, 12);
             this.btnTcp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -142,7 +143,7 @@
             // 
             // btnRemoveFilters
             // 
-            this.btnRemoveFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnRemoveFilters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnRemoveFilters.Enabled = false;
             this.btnRemoveFilters.Location = new System.Drawing.Point(611, 12);
             this.btnRemoveFilters.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -155,7 +156,7 @@
             // 
             // btnUDP
             // 
-            this.btnUDP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnUDP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnUDP.Enabled = false;
             this.btnUDP.Location = new System.Drawing.Point(844, 12);
             this.btnUDP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -168,7 +169,7 @@
             // 
             // btnArp
             // 
-            this.btnArp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnArp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnArp.Enabled = false;
             this.btnArp.Location = new System.Drawing.Point(944, 11);
             this.btnArp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -193,7 +194,7 @@
             // 
             // btnICMP
             // 
-            this.btnICMP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnICMP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnICMP.Enabled = false;
             this.btnICMP.Location = new System.Drawing.Point(743, 55);
             this.btnICMP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -206,7 +207,7 @@
             // 
             // btnIGMP
             // 
-            this.btnIGMP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnIGMP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnIGMP.Enabled = false;
             this.btnIGMP.Location = new System.Drawing.Point(844, 55);
             this.btnIGMP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -217,12 +218,25 @@
             this.btnIGMP.UseVisualStyleBackColor = false;
             this.btnIGMP.Click += new System.EventHandler(this.btnIGMP_Click);
             // 
+            // btnSniffFromFile
+            // 
+            this.btnSniffFromFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnSniffFromFile.Location = new System.Drawing.Point(150, 7);
+            this.btnSniffFromFile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSniffFromFile.Name = "btnSniffFromFile";
+            this.btnSniffFromFile.Size = new System.Drawing.Size(127, 42);
+            this.btnSniffFromFile.TabIndex = 18;
+            this.btnSniffFromFile.Text = "Sniff From File";
+            this.btnSniffFromFile.UseVisualStyleBackColor = false;
+            this.btnSniffFromFile.Click += new System.EventHandler(this.btnSniffFromFile_Click);
+            // 
             // IDS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.btnSniffFromFile);
             this.Controls.Add(this.btnIGMP);
             this.Controls.Add(this.btnICMP);
             this.Controls.Add(this.listDevices);
@@ -238,7 +252,7 @@
             this.Controls.Add(this.TbVersion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.StartSnifferBtn);
-            this.ForeColor = System.Drawing.Color.White;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "IDS";
             this.Text = "IDS";
@@ -265,6 +279,7 @@
         private System.Windows.Forms.ListBox listDevices;
         private System.Windows.Forms.Button btnICMP;
         private System.Windows.Forms.Button btnIGMP;
+        private System.Windows.Forms.Button btnSniffFromFile;
     }
 }
 

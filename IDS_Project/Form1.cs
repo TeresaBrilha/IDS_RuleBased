@@ -27,6 +27,7 @@ namespace IDS_Project
         delegate void SetTextCallback(RawCapture text);
         public ICaptureDevice deviceCaptured { get; set; }
         public CaptureDeviceList devices { get; set; }
+        public string pcapFile {get; set;}
 
         public IDS()
         {
@@ -39,6 +40,8 @@ namespace IDS_Project
         {
             //Initiate Filter Variable
             filters = string.Empty;
+            //Initiate File Variable
+            pcapFile = string.Empty;
             //Display NPCap Version
             TbVersion.Text = SharpPcap.Pcap.Version;
             //Display Devices in the network
@@ -58,7 +61,6 @@ namespace IDS_Project
         }
 
         //Inicio do sniffing para o dispositivo selecionado dando display nos seus packets
-
         private void StartSnifferBtn_Click(object sender, EventArgs e)
         {
             //Start Sniffing
@@ -86,6 +88,27 @@ namespace IDS_Project
                                         
             }   
             
+        }
+
+        //Inicio de sniffing através de ficheiro carregado
+        private void btnSniffFromFile_Click(object sender, EventArgs e)
+        {
+            //Procurar ficheiro e associa-lo à variavel pcapFile
+            var FD = new System.Windows.Forms.OpenFileDialog();
+            if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                pcapFile = FD.FileName;
+
+            deviceCaptured = new CaptureFileReaderDevice(pcapFile);
+            //Start Sniffing
+            isSniffing = true;
+            btnStopSniffing.Enabled = true;
+            StartSnifferBtn.Enabled = true;
+            //Open device for capture
+            deviceCaptured.Open();
+            tbPackets.AppendText($"-- Listening on {deviceCaptured.Description}\n");
+            deviceCaptured.OnPacketArrival += Device_OnPacketArrival;
+            deviceCaptured.StartCapture();
+
         }
 
         //Mostrar informações dos packets capturados
@@ -151,6 +174,8 @@ namespace IDS_Project
                         var ipPacket = (IPPacket)udp.ParentPacket;
                         string srcAddress = ipPacket.SourceAddress.ToString();
                         string dstAddress = ipPacket.DestinationAddress.ToString();
+                        //byte[] ipPacketHeadder = ipPacket.HeaderData;
+
 
                         tbPackets.AppendText($"Time:{time.Hour}:{time.Minute}:{time.Second} | Package Len = {lenPacket}" +
                         $" | Type: UDP | Source Port: {srcPort} | Destination Port: {dstPort} | Source IP: {srcAddress} | Destination IP: {dstAddress}\n");
@@ -329,7 +354,6 @@ namespace IDS_Project
         {
             StartSnifferBtn.Enabled = true;
         }
-
 
     }
 }
