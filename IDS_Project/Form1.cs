@@ -61,6 +61,7 @@ namespace IDS_Project
         }
 
         //Inicio do sniffing para o dispositivo selecionado dando display nos seus packets
+        #region Start Sniffing
         private void StartSnifferBtn_Click(object sender, EventArgs e)
         {
             //Start Sniffing
@@ -90,9 +91,13 @@ namespace IDS_Project
             
         }
 
+        #endregion
+
         //Inicio de sniffing através de ficheiro carregado
+        #region Start Sniffing From File
         private void btnSniffFromFile_Click(object sender, EventArgs e)
         {
+            tbPackets.Clear();
             //Procurar ficheiro e associa-lo à variavel pcapFile
             var FD = new System.Windows.Forms.OpenFileDialog();
             if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -102,7 +107,6 @@ namespace IDS_Project
             //Start Sniffing
             isSniffing = true;
             btnStopSniffing.Enabled = true;
-            StartSnifferBtn.Enabled = true;
             //Open device for capture
             deviceCaptured.Open();
             tbPackets.AppendText($"-- Listening on {deviceCaptured.Description}\n");
@@ -110,9 +114,10 @@ namespace IDS_Project
             deviceCaptured.StartCapture();
 
         }
+        #endregion
 
         //Mostrar informações dos packets capturados
-
+        #region Packets Information
         private void changePacketText(RawCapture packetResult)
         {
             if (this.tbPackets.InvokeRequired)
@@ -274,7 +279,10 @@ namespace IDS_Project
 
             }
         }
+        #endregion
 
+        //Ao receber pacote executar atribuir filtros e executar função changePacketText
+        #region On Packet Arrival
         private void Device_OnPacketArrival(object sender, PacketCapture e)
         {
             if (isSniffing)
@@ -289,7 +297,10 @@ namespace IDS_Project
                 e.Device.Close();
             }
         }
+        #endregion
 
+        //Funções de butões
+        #region Button Actions
         private void btnStopSniffing_Click(object sender, EventArgs e)
         {
             isSniffing = false;
@@ -350,10 +361,15 @@ namespace IDS_Project
             deviceCaptured.Filter = filters;
         }
 
+        #endregion
+
+        //Desbloquear botão sniffing ao selecionar dispositivo
+        #region Device Selected
         private void listDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
             StartSnifferBtn.Enabled = true;
         }
+        #endregion
 
     }
 }

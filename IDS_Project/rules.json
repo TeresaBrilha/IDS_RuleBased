@@ -1,0 +1,195 @@
+﻿[
+  {
+    "name": "detect_syn_flood",
+    "priority": 1,
+    "condition": {
+      "all": [
+        {
+          "fact": "syn_packet_count",
+          "operator": "greaterThanInclusive",
+          "value": 1000
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "SYN flood detected!"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Port Scan Detection Rule",
+    "priority": 2,
+    "condition": {
+      "all": [
+        {
+          "fact": "protocol",
+          "operator": "equal",
+          "value": "tcp"
+        },
+        {
+          "fact": "destination_port_count",
+          "operator": "greaterThanInclusive",
+          "value": 10
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "Port scan detected!"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DoS Attack Detection Rule - High Rate of Source IP Changes",
+    "priority": 3,
+    "condition": {
+      "all": [
+        {
+          "fact": "protocol",
+          "operator": "equal",
+          "value": "tcp"
+        },
+        {
+          "fact": "source_ip_count",
+          "operator": "greaterThanInclusive",
+          "value": 100
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "DoS attack detected - high rate of source IP changes!"
+        }
+      }
+    ]
+  },
+  {
+    "name": "DoS Attack Detection Rule - High Rate of Requests to Single IP",
+    "priority": 4,
+    "condition": {
+      "all": [
+        {
+          "fact": "protocol",
+          "operator": "equal",
+          "value": "tcp"
+        },
+        {
+          "fact": "destination",
+          "operator": "equal",
+          "value": "10.0.0.1"
+        },
+        {
+          "fact": "request_count",
+          "operator": "greaterThanInclusive",
+          "value": 1000
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "DoS attack detected - high rate of requests to single IP!"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Mobile Device Detection Rule - User Agent",
+    "priority": 5,
+    "condition": {
+      "all": [
+        {
+          "fact": "user_agent",
+          "operator": "contains",
+          "value": "Mobile"
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "Packet detected from mobile device - User Agent: Mobile"
+        }
+      }
+    ]
+  },
+  {
+    "name": "SQL Injection Detection Rule - Multiple Conditions",
+    "priority": 6,
+    "condition": {
+      "all": [
+        {
+          "fact": "http_request_uri",
+          "operator": "contains",
+          "value": "';"
+        },
+        {
+          "fact": "http_request_uri",
+          "operator": "contains",
+          "value": "--"
+        },
+        {
+          "fact": "http_request_uri",
+          "operator": "matches",
+          "value": ".*/\\*.*\\*/"
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "SQL injection attack detected!"
+        }
+      }
+    ]
+  },
+  {
+    "name": "RAT Detection Rule - Multiple Conditions",
+    "priority": 7,
+    "condition": {
+      "all": [
+        {
+          "fact": "destination_port",
+          "operator": "in",
+          "value": [ 80, 443, 3389 ]
+        },
+        {
+          "fact": "packet_size",
+          "operator": "greaterThanInclusive",
+          "value": 1000
+        },
+        {
+          "fact": "packet_payload",
+          "operator": "contains",
+          "value": "cmd.exe"
+        },
+        {
+          "fact": "packet_payload",
+          "operator": "matches",
+          "value": ".*c:\\\\windows\\\\system32\\\\*.exe"
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "params": {
+          "message": "RAT detected!"
+        }
+      }
+    ]
+  }
+]
+
