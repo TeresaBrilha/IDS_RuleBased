@@ -102,6 +102,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="rules.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
