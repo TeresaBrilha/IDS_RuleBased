@@ -46,6 +46,7 @@ namespace IDS_Project
             TbVersion.Text = SharpPcap.Pcap.Version;
             //Display Devices in the network
             devices = CaptureDeviceList.Instance;
+            // Load the rules from the JSON file
 
             if (devices.Count == 0)
             {
@@ -147,7 +148,7 @@ namespace IDS_Project
                         //Dados Pacote
                         DateTime time = packetResult.Timeval.Date;
                         int lenPacket = packetResult.Data.Length;
-
+                        
                         //Dados Tcp
                         string srcPort = tcp.SourcePort.ToString();
                         string dstPort = tcp.DestinationPort.ToString();
