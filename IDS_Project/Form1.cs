@@ -1,4 +1,6 @@
-﻿using PacketDotNet;
+﻿using IDS_Project.Classes;
+using Newtonsoft.Json;
+using PacketDotNet;
 using SharpPcap;
 using SharpPcap.LibPcap;
 using System;
@@ -8,6 +10,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -22,6 +25,10 @@ namespace IDS_Project
 {
     public partial class IDS : Form
     {
+        // Deserialize the JSON string into a list of Rule objects
+
+        List<Classes.Rule> rules = new List<Classes.Rule>();
+        public string jsonRules = File.ReadAllText("rules.json");
         public bool isSniffing { get; set; }
         public string filters { get; set; }
         delegate void SetTextCallback(RawCapture text);
@@ -46,6 +53,8 @@ namespace IDS_Project
             TbVersion.Text = SharpPcap.Pcap.Version;
             //Display Devices in the network
             devices = CaptureDeviceList.Instance;
+            //Deserialize json rules file
+            rules = JsonConvert.DeserializeObject<List<Classes.Rule>>(jsonRules);            
 
             if (devices.Count == 0)
             {
@@ -147,7 +156,7 @@ namespace IDS_Project
                         //Dados Pacote
                         DateTime time = packetResult.Timeval.Date;
                         int lenPacket = packetResult.Data.Length;
-
+                        
                         //Dados Tcp
                         string srcPort = tcp.SourcePort.ToString();
                         string dstPort = tcp.DestinationPort.ToString();
@@ -285,10 +294,27 @@ namespace IDS_Project
         #region On Packet Arrival
         private void Device_OnPacketArrival(object sender, PacketCapture e)
         {
+
             if (isSniffing)
             {
                 deviceCaptured = e.Device;
                 deviceCaptured.Filter = filters;
+
+                foreach (Classes.Rule rule in rules)
+                {
+                    if (rule.IsMatch(e.GetPacket()))
+                    {
+                        foreach (Classes.Action action in rule.Actions)
+                        {
+                            string alert = action.Execute();
+                            tbAlerts.Invoke(new MethodInvoker(delegate
+                            {
+                                tbAlerts.AppendText(alert);
+                            }));
+                        }
+                    }
+                }
+
                 changePacketText(e.GetPacket());
             }
             else
