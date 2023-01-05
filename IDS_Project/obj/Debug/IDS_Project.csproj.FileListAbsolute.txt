@@ -70,3 +70,6 @@ C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Projec
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.csproj.CopyComplete
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.exe
 C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\obj\Debug\IDS_Project.pdb
+C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\bin\Debug\Json.Net.dll
+C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Teresa Sousa\Desktop\coisitas\faculdade\Mestrado\SRC\IDS_SRC\IDS_Project\bin\Debug\Newtonsoft.Json.xml
