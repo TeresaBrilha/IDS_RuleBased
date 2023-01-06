@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using SharpPcap;
 using System.Net;
 using Newtonsoft.Json;
+using System.Collections;
+using Newtonsoft.Json.Linq;
 
 namespace IDS_Project.Classes
 {
@@ -27,34 +29,50 @@ namespace IDS_Project.Classes
             bool result = false;
             // Extract the value of this fact from the packet
             object packetValue = ExtractValue(packet);
-            // Compare the value of this fact to the expected value using the specified operator
-            switch (OperatorValue)
+
+            if (packetValue != null)
             {
-                case "equal":
-                    result = packetValue.Equals(Value);
-                    break;
-                case "notEqual":
-                    result = !packetValue.Equals(Value);
-                    break;
-                case "greaterThan":
-                    result = (int)packetValue > Convert.ToInt32(Value);
-                    break;
-                case "greaterThanInclusive":
-                    result = (int)packetValue >= Convert.ToInt32(Value);
-                    break;
-                case "lessThan":
-                    result = (int)packetValue < Convert.ToInt32(Value);
-                    break;
-                case "lessThanInclusive":
-                    result = (int)packetValue <= Convert.ToInt32(Value);
-                    break;
-                case "contains":
-                    result = packetValue.ToString().Contains(Value.ToString());
-                    break;
-                case "matches":
-                    result = Regex.IsMatch(packetValue.ToString(), Value.ToString());
-                    break;
+                // Compare the value of this fact to the expected value using the specified operator
+                switch (OperatorValue)
+                {
+                    case "equal":
+                        result = packetValue.Equals(Value);
+                        break;
+                    case "notEqual":
+                        result = !packetValue.Equals(Value);
+                        break;
+                    case "greaterThan":
+                        result = (int)packetValue > Convert.ToInt32(Value);
+                        break;
+                    case "greaterThanInclusive":
+                        result = (int)packetValue >= Convert.ToInt32(Value);
+                        break;
+                    case "lessThan":
+                        result = (int)packetValue < Convert.ToInt32(Value);
+                        break;
+                    case "lessThanInclusive":
+                        result = (int)packetValue <= Convert.ToInt32(Value);
+                        break;
+                    case "contains":
+                        result = packetValue.ToString().Contains(Value.ToString());
+                        break;
+                    case "matches":
+                        result = Regex.IsMatch(packetValue.ToString(), Value.ToString());
+                        break;
+                    case "in":
+                        if (packetValue is int)
+                        {
+                            result = Enumerable.Contains(((JArray)Value).ToObject<int[]>(), (int)packetValue);
+                        }
+                        else
+                        {
+                            result = Enumerable.Contains((object[])((JArray)Value).ToObject<object[]>(), packetValue);
+                        }
+
+                        break;
+                }
             }
+            
             return result;
         }
 
@@ -266,6 +284,9 @@ namespace IDS_Project.Classes
                     break;
                 case "packet_size":
                     value = p.Bytes.Length;
+                    break;
+                case "packet_payload":
+                    value = p.PayloadData;
                     break;
             }
             return value;

@@ -219,6 +219,38 @@
         }
       }
     ]
+  },
+  {
+    "name": "HTTP Packet Detection Rule",
+    "priority": 9,
+    "condition": {
+      "logicalOperator": "all",
+      "facts": [
+        {
+          "name": "protocol",
+          "operatorValue": "in",
+          "value": ["udp", "tcp"]
+        },
+        {
+          "name": "destination_port",
+          "operatorValue": "in",
+          "value": [ 80, 443 ]
+        },
+        {
+          "name": "packet_size",
+          "operatorValue": "lessThanInclusive",
+          "value": 2048
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "alert",
+        "parameters": {
+          "message": "HTTP packet detected!"
+        }
+      }
+    ]
   }
 ]
 
