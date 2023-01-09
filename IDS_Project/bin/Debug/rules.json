@@ -111,12 +111,22 @@
     "name": "Mobile Device Detection Rule - User Agent",
     "priority": 5,
     "condition": {
-      "logicalOperator": "all",
+      "logicalOperator": "any",
       "facts": [
         {
           "name": "user_agent",
           "operatorValue": "contains",
           "value": "Mobile"
+        },
+        {
+          "name": "user_agent",
+          "operatorValue": "contains",
+          "value": "Android"
+        },
+        {
+          "name": "user_agent",
+          "operatorValue": "contains",
+          "value": "iPhone"
         }
       ]
     },
@@ -124,7 +134,7 @@
       {
         "name": "alert",
         "parameters": {
-          "message": "Packet detected from mobile device - User Agent: Mobile"
+          "message": "Packet detected from mobile device!"
         }
       }
     ]
@@ -234,7 +244,7 @@
         {
           "name": "destination_port",
           "operatorValue": "in",
-          "value": [ 80, 443 ]
+          "value": [ 80 ]
         },
         {
           "name": "packet_size",

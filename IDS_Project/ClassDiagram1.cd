@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IDS_Project.Classes.Rule">
+    <Position X="2" Y="2" Width="1.5" />
+    <AssociationLine Name="Condition1" Type="IDS_Project.Classes.Condition" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="3.125" />
+        <Point X="4.335" Y="3.125" />
+        <Point X="4.335" Y="5.125" />
+        <Point X="4.5" Y="5.125" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Action" Type="IDS_Project.Classes.Action" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="2.875" />
+        <Point X="3.875" Y="2.875" />
+        <Point X="3.875" Y="2.312" />
+        <Point X="4.5" Y="2.312" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAEIACAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Classes\Rule.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Condition1" />
+      <Property Name="Action" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDS_Project.Classes.Condition">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <AssociationLine Name="Fact" Type="IDS_Project.Classes.Fact" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="5.688" />
+        <Point X="6.375" Y="5.688" />
+        <Point X="6.375" Y="4.875" />
+        <Point X="6.75" Y="4.875" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABCAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Classes\Condition.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Fact" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="IDS_Project.Classes.Action">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Classes\Action.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDS_Project.Classes.Fact">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAg=</HashCode>
+      <FileName>Classes\Fact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
