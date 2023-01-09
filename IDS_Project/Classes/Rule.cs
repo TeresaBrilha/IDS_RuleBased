@@ -24,6 +24,22 @@ namespace IDS_Project.Classes
         [JsonProperty("actions")]
         public List<Action> Actions { get; set; }
 
+        public Condition Condition1
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Action Action
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // Method to check if a packet matches this rule
         public bool IsMatch(RawCapture packet)
         {

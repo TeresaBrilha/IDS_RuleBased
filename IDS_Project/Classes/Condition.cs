@@ -17,6 +17,14 @@ namespace IDS_Project.Classes
         [JsonProperty("facts")]
         public List<Fact> Facts { get; set; }
 
+        public Fact Fact
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         // Method to check if a packet matches this condition
         public bool IsMatch(RawCapture packet)
         {

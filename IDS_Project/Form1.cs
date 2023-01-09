@@ -77,6 +77,8 @@ namespace IDS_Project
             isSniffing = true;
             //Clean Packets TextBox
             tbPackets.Clear();
+            //Clean Alerts 
+            tbAlerts.Clear();
             //Enable Stop Button 
             btnStopSniffing.Enabled = true;
 
@@ -107,6 +109,7 @@ namespace IDS_Project
         private void btnSniffFromFile_Click(object sender, EventArgs e)
         {
             tbPackets.Clear();
+            tbAlerts.Clear();
             //Procurar ficheiro e associa-lo à variavel pcapFile
             var FD = new System.Windows.Forms.OpenFileDialog();
             if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
