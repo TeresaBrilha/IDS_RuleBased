@@ -6,6 +6,8 @@ Welcome to the Intrusion Detection System (IDS) repository! This project was aim
 
 The Intrusion Detection System (IDS) is a project that aimed to evaluate network traffic based on a set of predefined rules. It analyzed each packet circulating on the network and checked for suspicious behavior according to the rules configured previously. When a packet was flagged as potentially malicious, the IDS triggered an alert.
 
+The presente project was developed in C# with a Windows Form interface, which limits its usage to the Windows operation system. This is something I would change has it represents a significant restriction.
+
 Please note that this project is no longer being developed. It only served as a learning experience.
 
 ## Features
