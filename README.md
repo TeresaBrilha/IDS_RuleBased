@@ -31,8 +31,14 @@ Necessary tool to install:
 
 To use the project is necessary the installation of the following librarys:
 - SharpPcap
+```bash
+dotnet add package SharpPcap --version 6.2.5
 - PacketDotNet
+```bash
+dotnet add package PacketDotNet --version 1.4.7
 - Newtonsoft.Json
+```bash
+dotnet add package Newtonsoft.Json --version 13.0.3
 
 ## Contact
 
