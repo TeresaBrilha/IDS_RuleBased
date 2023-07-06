@@ -3,7 +3,7 @@
 Welcome to the Intrusion Detection System (IDS) repository! This project was aimed at developing an Intrusion Detection System for detecting and alerting potential intrusions or suspicious activities on a network.
 
 <p align="center">
-  <img src="ids.PNG" alt="Image" width="400" />
+  <img src="ids.PNG" alt="Image" width="1200" />
 </p>
 
 
