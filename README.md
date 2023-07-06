@@ -36,6 +36,6 @@ To use the project is necessary the installation of the following librarys:
 
 ## Contact
 
-If you have any questions related to the IDS project feel free to contact me in my LikedIn: [https://www.linkedin.com/in/teresa-sousa/]
+If you have any questions related to the IDS project feel free to contact me in my LinkedIn: [https://www.linkedin.com/in/teresa-sousa/]
 
 Thank you for your interest in the Intrusion Detection System project!
