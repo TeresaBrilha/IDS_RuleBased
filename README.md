@@ -20,7 +20,7 @@ Please note that this project is no longer being developed. It only served as a 
 As the project is no longer being actively developed, please note that it may have known bugs or limitations that were not resolved.
 
 Necessary tool to install:
--Npcap
+- Npcap
 
 To use the project is necessary the installation of the following librarys:
 - SharpPcap
