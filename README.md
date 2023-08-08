@@ -42,9 +42,3 @@ dotnet add package PacketDotNet --version 1.4.7
 ```bash
 dotnet add package Newtonsoft.Json --version 13.0.3
 ```
-
-## Contact
-
-If you have any questions related to the IDS project feel free to contact me on LinkedIn: [https://www.linkedin.com/in/teresa-sousa/]
-
-Thank you for your interest in the Intrusion Detection System project!
